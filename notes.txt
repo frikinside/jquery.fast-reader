@@ -1,0 +1,28 @@
+Plugin Notes:
+
+::FONT::
+This plugin needs a special font to work properly. A font in which each character has the same width is needed. There are plenty of fonts to choose, like every monospaced font for example, here is a common list:
+- Droid Sans Mono
+- Consolas
+- Menlo
+- Monaco
+- Lucida Console
+- Liberation Mono
+- DejaVu Sans Mono
+- Bitstream Vera Sans Mono
+- Courier New
+- monospace
+- serif
+
+I choose Droid Sans Mono for this plugin, in the provided sample I use "Droid Sans Mono" from google fonts, to use it you need to add this at the head tag in your html:
+<link href="https://fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet" type="text/css">
+
+If you want to use another font, you need to add the selected font and change the css styles fo the plugin referencing that font.
+
+::Icons/Buttons::
+There are to buttons added, a play/pause button and a close button in form of an "a" tag.
+But there's no images or icons provided, instead of using an image I use FontAwesome to get a good scalable and vector icons. That put another requierement in you html, you need to add a reference to fontawesome like this:
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+Of course, if you don't want to use fontawesome you can use icons or image instead by modifing the styles of the plugin.
+I can provided an "iconed" version of the plugin avoiding the use of fontawesome if needed.
