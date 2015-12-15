@@ -11,12 +11,14 @@ A simple plugin to allow fast reading text inside HTML elements showing one word
 Include script after the include of jQuery library
 
 ```js
-<script src="/path/to/jquery.fast-reader.js"></script>````
+<script src="/path/to/jquery.fast-reader.js"></script>
+````
 
 ## Usage
 
 ```js
-$("selector").fastreader();```
+$("selector").fastreader();
+```
 
 ## NOTE
 
