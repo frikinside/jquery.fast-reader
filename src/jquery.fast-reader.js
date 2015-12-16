@@ -64,32 +64,7 @@
 	function pivot(word){
 		var length = word.length;
 
-		var bestLetter = 1;
-		switch (length) {
-			case 1:
-				bestLetter = 1; // first
-				break;
-			case 2:
-			case 3:
-			case 4:
-			case 5:
-				bestLetter = 2; // second
-				break;
-			case 6:
-			case 7:
-			case 8:
-			case 9:
-				bestLetter = 3; // third
-				break;
-			case 10:
-			case 11:
-			case 12:
-			case 13:
-				bestLetter = 4; // fourth
-				break;
-			default:
-				bestLetter = 5; // fifth
-		};
+		var bestLetter = 1 + Math.floor((length-1)/4);
 
 		var start = '.'.repeat((11-bestLetter)) + word.slice(0, bestLetter-1).replace('.', '&#8226;');
 		var middle = word.slice(bestLetter-1,bestLetter).replace('.', '&#8226;');
