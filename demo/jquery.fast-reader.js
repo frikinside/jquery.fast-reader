@@ -18,7 +18,7 @@
 			
 			if(!settings.autoplay){
 				paused = true;
-				$("#fast-reader #fast-reader-text").html(pivot(settings.readyText));
+				$("#fast-reader #fast-reader-text").html(pivot(settings.readyText,settings.maxPivotLetterPos));
 			}
 			interval = setInterval(function(){
 				if(word_counter == (words.length)){
@@ -26,7 +26,7 @@
 					console.log(node);
 				} else {
 					if(!paused) {
-						$("#fast-reader #fast-reader-text").html(pivot(words[word_counter]));
+						$("#fast-reader #fast-reader-text").html(pivot(words[word_counter],settings.maxPivotLetterPos));
 						word_counter++;
 					}
 				}
@@ -56,40 +56,16 @@
 	$.fn.fastreader.defaults = {
 		color: "black",
 		autoplay: false,
-		readyText: "Preparado",
+		readyText: "Ready",
+		maxPivotLetterPos: 5,
         wpm: 300 //wpd: Words Per Minute
 	};
 	
 	// Find the pivot-character of the current word.
-	function pivot(word){
+	function pivot(word,maxPivotLetterPos){
 		var length = word.length;
 
-		var bestLetter = 1;
-		switch (length) {
-			case 1:
-				bestLetter = 1; // first
-				break;
-			case 2:
-			case 3:
-			case 4:
-			case 5:
-				bestLetter = 2; // second
-				break;
-			case 6:
-			case 7:
-			case 8:
-			case 9:
-				bestLetter = 3; // third
-				break;
-			case 10:
-			case 11:
-			case 12:
-			case 13:
-				bestLetter = 4; // fourth
-				break;
-			default:
-				bestLetter = 5; // fifth
-		};
+		var bestLetter = 1 + Math.min(Math.floor((length-1)/4),maxPivotLetterPos);
 
 		var start = '.'.repeat((11-bestLetter)) + word.slice(0, bestLetter-1).replace('.', '&#8226;');
 		var middle = word.slice(bestLetter-1,bestLetter).replace('.', '&#8226;');
