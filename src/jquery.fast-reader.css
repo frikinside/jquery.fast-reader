@@ -64,13 +64,13 @@ div#fast-reader-overlay
 }
 .fast-reader-play .fast-reader-icon 
 {
-    background: url(play20.png) no-repeat center;
+    background: url(images/play20.png) no-repeat center;
 }
 .fast-reader-pause .fast-reader-icon 
 {
-    background: url(pause20.png) no-repeat center;
+    background: url(images/pause20.png) no-repeat center;
 }
 .fast-reader-close .fast-reader-icon
 {
-    background: url(close20.png) no-repeat center;
+    background: url(images/close20.png) no-repeat center;
 }

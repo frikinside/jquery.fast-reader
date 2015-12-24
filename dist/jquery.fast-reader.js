@@ -6,7 +6,7 @@
         init : function(options) {
 			var settings = $.extend( {}, $.fn.fastreader.defaults, options );
 			var node = this;
-			createFastreaderHtml();
+			createFastreaderHtml(settings.useFontAwesome);
 			$("#fast-reader").data("fast-reader-node",node);
 			
 			var words = new Array();
@@ -18,7 +18,7 @@
 			
 			if(!settings.autoplay){
 				paused = true;
-				$("#fast-reader #fast-reader-text").html(pivot(settings.readyText));
+				$("#fast-reader #fast-reader-text").html(pivot(settings.readyText,settings.maxPivotLetterPos));
 			}
 			interval = setInterval(function(){
 				if(word_counter == (words.length)){
@@ -26,7 +26,7 @@
 					console.log(node);
 				} else {
 					if(!paused) {
-						$("#fast-reader #fast-reader-text").html(pivot(words[word_counter]));
+						$("#fast-reader #fast-reader-text").html(pivot(words[word_counter],settings.maxPivotLetterPos));
 						word_counter++;
 					}
 				}
@@ -37,8 +37,8 @@
 			
 			return this;
         },
-        pause : function( ) { paused = !paused;  },
-        close : function( ) { clearInterval(interval);$("#fast-reader-overlay").fadeOut(); },
+        pause : function( ) { paused = !paused;togglePauseButton($("#fast-reader-buttons a.fast-reader-pause,#fast-reader-buttons a.fast-reader-play"));  },
+        close : function( ) { clearInterval(interval);$("#fast-reader-overlay").fadeOut();togglePauseButton($("#fast-reader-buttons a.fast-reader-pause,#fast-reader-buttons a.fast-reader-play")); },
 		destroy : function( ) { clearInterval(interval);$("#fast-reader-overlay").fadeOut();$("#fast-reader-overlay").remove(); }
     };
  
@@ -55,41 +55,18 @@
  
 	$.fn.fastreader.defaults = {
 		color: "black",
+        useFontAwesome: false,
 		autoplay: false,
-		readyText: "Preparado",
+		readyText: "Ready",
+		maxPivotLetterPos: 5,
         wpm: 300 //wpd: Words Per Minute
 	};
 	
 	// Find the pivot-character of the current word.
-	function pivot(word){
+	function pivot(word,maxPivotLetterPos){
 		var length = word.length;
 
-		var bestLetter = 1;
-		switch (length) {
-			case 1:
-				bestLetter = 1; // first
-				break;
-			case 2:
-			case 3:
-			case 4:
-			case 5:
-				bestLetter = 2; // second
-				break;
-			case 6:
-			case 7:
-			case 8:
-			case 9:
-				bestLetter = 3; // third
-				break;
-			case 10:
-			case 11:
-			case 12:
-			case 13:
-				bestLetter = 4; // fourth
-				break;
-			default:
-				bestLetter = 5; // fifth
-		};
+		var bestLetter = 1 + Math.min(Math.floor((length-1)/4),maxPivotLetterPos);
 
 		var start = '.'.repeat((11-bestLetter)) + word.slice(0, bestLetter-1).replace('.', '&#8226;');
 		var middle = word.slice(bestLetter-1,bestLetter).replace('.', '&#8226;');
@@ -102,34 +79,39 @@
 		return result;
 	}
 	
-	function createFastreaderHtml() {
-		var html = '<div id="fast-reader-overlay" class="jquery-fast-reader"><div id="fast-reader" class="jquery-fast-reader"><span id="fast-reader-text"></span><span id="fast-reader-buttons"><a href="" class="fast-reading-pause"><i class="fa fa-play"></i></a><a href="#" class="fast-reading-close" ><i class="fa fa-times"></i></a></span></div></div>';
+	function createFastreaderHtml(useFontAwesome) {
+		var html = '<div id="fast-reader-overlay" class="jquery-fast-reader"><div id="fast-reader" class="jquery-fast-reader"><span id="fast-reader-text"></span><span id="fast-reader-buttons"><a href="" class="fast-reader-play">' + (useFontAwesome ? '<i class="fa fa-play"></i>' : '<span class="fast-reader-icon"></span>') + '</a><a href="#" class="fast-reader-close" >' + (useFontAwesome ? '<i class="fa fa-times"></i>' : '<span class="fast-reader-icon"></span>') + '</a></span></div></div>';
 		if($("#fast-reader").length ==0) {
 			$("body").append(html);
-			$("#fast-reader-buttons a.fast-reading-pause").click(function(e) {
+			$("#fast-reader-buttons a.fast-reader-pause, #fast-reader-buttons a.fast-reader-play").click(function(e) {
 				e.preventDefault();
 				$("#fast-reader").data("fast-reader-node").fastreader("pause");
-				var icon_node = $(this).find("i.fa");
-				if(icon_node.hasClass("fa-pause")) {
-					icon_node.removeClass("fa-pause");
-					icon_node.addClass("fa-play");
-				}else{
-					icon_node.removeClass("fa-play");
-					icon_node.addClass("fa-pause");
-				}
 			});
-			$("#fast-reader-buttons a.fast-reading-close").click(function(e) {
+			$("#fast-reader-buttons a.fast-reader-close").click(function(e) {
 				e.preventDefault();
-				var icon_node = $("#fast-reader-buttons a.fast-reading-pause i.fa");
-				if(icon_node.hasClass("fa-pause")) {
-					icon_node.removeClass("fa-pause");
-					icon_node.addClass("fa-play");
-				}
 				$("#fast-reader").data("fast-reader-node").fastreader("close");
 			});
 		}
 	}
 	
+    function togglePauseButton(node) {
+        var icon_node = node.find("i.fa");
+        if(icon_node.hasClass("fa-pause")) {
+            icon_node.removeClass("fa-pause");
+            icon_node.addClass("fa-play");
+        }else{
+            icon_node.removeClass("fa-play");
+            icon_node.addClass("fa-pause");
+        }
+        if(node.hasClass('fast-reader-play')) {
+            node.removeClass('fast-reader-play');
+            node.addClass('fast-reader-pause');
+        }else{
+            node.removeClass('fast-reader-pause');
+            node.addClass('fast-reader-play');
+        }
+    }
+    
 	/* UTILS */
 	String.prototype.repeat = function( num ){
 		if(num < 1){
