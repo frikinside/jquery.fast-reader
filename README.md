@@ -12,13 +12,65 @@ Include script after the include of jQuery library
 
 ```html
 <script src="/path/to/jquery.fast-reader.js"></script>
-````
+```
 
 ## Usage
 
 ```js
 $("selector").fastreader();
 ```
+
+### Basic Example
+#### HTML
+```html
+<button id="start_fastreader">Start Fastreader</button>
+<div id="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam a efficitur est. Pellentesque et erat tempus, tristique ex at, interdum purus. Proin tempor sodales luctus. Donec interdum ullamcorper magna, ut hendrerit lorem molestie vel. Phasellus eget lectus vehicula, faucibus nulla a, rutrum quam. Nunc ut lobortis sem. Aliquam efficitur nec sapien a semper. Etiam vel mollis elit, at condimentum ante. Mauris ultricies, eros sit amet commodo ornare, ligula turpis feugiat lacus, ultrices pellentesque enim diam nec justo.</div>
+```
+#### JS
+```js
+$(document).ready(function(){
+    $("#start_fastreader").click(function(){
+        $("#text").fastreader();
+    })
+});
+```
+
+### Settings options
+```js
+$.fn.fastreader.defaults = {
+    color: "black", // Color of the text
+    useFontAwesome: false, // Use fontawesome for the controls
+    autoplay: false, // Play the text when fastreader ready
+    readyText: "Ready", // Text shown when the fastreader is prepared to play
+    maxPivotLetterPos: 5, // Maximum position of the pivot leter (center of sight)
+    wpm: 300 // Words Per Minute
+};
+```
+#### Set settings
+```js
+$("#text").fastreader(
+    {
+        color: "blue",
+        useFontAwesome: true,
+        autoplay: true,
+        readyText: "Let's go!",
+        wpm: 100
+    }
+);
+```
+
+### Methods
+- **pause**: Reader stops/continue showing words.
+- **close**: Reader stops showing words and player close and hide. Also, reset to the start of the text.
+- **destroy**: Reader stops showing words, player close, hide and then the *HTML* of the player is removed from teh * DOM* 
+#### Invoke methods
+```js
+$("#text").fastreader("methodName"); // Generic example
+$("#text").fastreader("pause"); // Player paused
+$("#text").fastreader("close"); // Player closed
+$("#text").fastreader("destroy"); // Player destroyeds
+```
+
 
 ## NOTE
 
