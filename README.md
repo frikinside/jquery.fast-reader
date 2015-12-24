@@ -68,10 +68,28 @@ $("#text").fastreader(
 $("#text").fastreader("methodName"); // Generic example
 $("#text").fastreader("pause"); // Player paused
 $("#text").fastreader("close"); // Player closed
-$("#text").fastreader("destroy"); // Player destroyeds
+$("#text").fastreader("destroy"); // Player destroyed
 ```
 
+## Fonts
 
-## NOTE
+This plugin needs a specific type of font to work properly. In order to fix the pivot leter always in the center of the sight we need a font wich every letter take the same width.
+Any *monospaced* font has this property. In this case the default css is using *'Droid Sans Mono'* wich i take it from google fonts.
+```html
+<link href="https://fonts.googleapis.com/css?family=Droid+Sans+Mono" rel="stylesheet" type="text/css">
+``` 
+There are other insteresting fonts for the job, as an example, here are few of them:
+- Consolas
+- Menlo
+- Monaco
+- Lucida Console
+- Liberation Mono
+- DejaVu Sans Mono
+- Bitstream Vera Sans Mono
+- Courier New
+- monospace
 
-Readme in progress
+## TO-DO
+- Set color for pivot letter in the settings (not important, you can use css for that).
+- Custom template for the player.
+- Countdown for the playing (instead of instant play).
