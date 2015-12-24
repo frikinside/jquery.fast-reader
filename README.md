@@ -11,7 +11,13 @@ A simple plugin to allow fast reading text inside HTML elements showing one word
 Include script after the include of jQuery library
 
 ```html
-<script src="/path/to/jquery.fast-reader.js"></script>
+<script src="/path/to/jquery.fast-reader.min.js"></script>
+```
+
+Include the css or a custom css for player styles
+
+```html
+<link href='/path/to/jquery.fast-reader.min.css' rel='stylesheet' type='text/css'>
 ```
 
 ## Usage
@@ -63,6 +69,7 @@ $("#text").fastreader(
 - **pause**: Reader stops/continue showing words.
 - **close**: Reader stops showing words and player close and hide. Also, reset to the start of the text.
 - **destroy**: Reader stops showing words, player close, hide and then the *HTML* of the player is removed from teh * DOM* 
+
 #### Invoke methods
 ```js
 $("#text").fastreader("methodName"); // Generic example
