@@ -4,7 +4,7 @@ A simple plugin to allow fast reading text inside HTML elements showing one word
 
 ## Live Demo
 
-<http://www.frikinside.net/jquery-fastreader/demo/demo.html>
+<http://frikinside.github.io/jquery.fast-reader-demo/>
 
 ## Instalation
 
@@ -14,7 +14,7 @@ Include script after the include of jQuery library
 <script src="/path/to/jquery.fast-reader.min.js"></script>
 ```
 
-Include the css or a custom css for player styles
+Include the plugin css or a custom css for player styles
 
 ```html
 <link href='/path/to/jquery.fast-reader.min.css' rel='stylesheet' type='text/css'>
