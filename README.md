@@ -20,6 +20,12 @@ Include the plugin css or a custom css for player styles
 <link href='/path/to/jquery.fast-reader.min.css' rel='stylesheet' type='text/css'>
 ```
 
+### npm
+You can use npm for install the plugin
+```npm
+npm install fast-reader
+```
+
 ## Usage
 
 ```js
