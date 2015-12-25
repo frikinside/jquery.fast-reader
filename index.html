@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Jquery.fast-reader by frikinside</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Jquery.fast-reader</h1>
+      <h2 class="project-tagline">A simple plugin to allow fast reading text inside HTML elements showing one word at a time</h2>
+      <a href="https://github.com/frikinside/jquery.fast-reader" class="btn">View on GitHub</a>
+      <a href="https://github.com/frikinside/jquery.fast-reader/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/frikinside/jquery.fast-reader/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="fast-reader-jquery-plugin" class="anchor" href="#fast-reader-jquery-plugin" aria-hidden="true"><span class="octicon octicon-link"></span></a>Fast reader jQuery plugin</h1>
+
+<p>A simple plugin to allow fast reading text inside HTML elements showing one word at a time.</p>
+
+<h2>
+<a id="live-demo" class="anchor" href="#live-demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Live Demo</h2>
+
+<p><a href="http://www.frikinside.net/jquery-fastreader/demo/demo.html">http://www.frikinside.net/jquery-fastreader/demo/demo.html</a></p>
+
+<h2>
+<a id="instalation" class="anchor" href="#instalation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Instalation</h2>
+
+<p>Include script after the include of jQuery library</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>/path/to/jquery.fast-reader.min.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
+
+<p>Include the css or a custom css for player styles</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">link</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">'</span>/path/to/jquery.fast-reader.min.css<span class="pl-pds">'</span></span> <span class="pl-e">rel</span>=<span class="pl-s"><span class="pl-pds">'</span>stylesheet<span class="pl-pds">'</span></span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">'</span>text/css<span class="pl-pds">'</span></span>&gt;</pre></div>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">"</span>selector<span class="pl-pds">"</span></span>).<span class="pl-en">fastreader</span>();</pre></div>
+
+<h3>
+<a id="basic-example" class="anchor" href="#basic-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic Example</h3>
+
+<h4>
+<a id="html" class="anchor" href="#html" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTML</h4>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">button</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>start_fastreader<span class="pl-pds">"</span></span>&gt;Start Fastreader&lt;/<span class="pl-ent">button</span>&gt;
+&lt;<span class="pl-ent">div</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>text<span class="pl-pds">"</span></span>&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam a efficitur est. Pellentesque et erat tempus, tristique ex at, interdum purus. Proin tempor sodales luctus. Donec interdum ullamcorper magna, ut hendrerit lorem molestie vel. Phasellus eget lectus vehicula, faucibus nulla a, rutrum quam. Nunc ut lobortis sem. Aliquam efficitur nec sapien a semper. Etiam vel mollis elit, at condimentum ante. Mauris ultricies, eros sit amet commodo ornare, ligula turpis feugiat lacus, ultrices pellentesque enim diam nec justo.&lt;/<span class="pl-ent">div</span>&gt;</pre></div>
+
+<h4>
+<a id="js" class="anchor" href="#js" aria-hidden="true"><span class="octicon octicon-link"></span></a>JS</h4>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">$</span>(<span class="pl-c1">document</span>).<span class="pl-en">ready</span>(<span class="pl-k">function</span>(){
+    <span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">"</span>#start_fastreader<span class="pl-pds">"</span></span>).<span class="pl-c1">click</span>(<span class="pl-k">function</span>(){
+        <span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">"</span>#text<span class="pl-pds">"</span></span>).<span class="pl-en">fastreader</span>();
+    })
+});</pre></div>
+
+<h3>
+<a id="settings-options" class="anchor" href="#settings-options" aria-hidden="true"><span class="octicon octicon-link"></span></a>Settings options</h3>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">$</span>.<span class="pl-smi">fn</span>.<span class="pl-smi">fastreader</span>.<span class="pl-smi">defaults</span> <span class="pl-k">=</span> {
+    color<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>black<span class="pl-pds">"</span></span>, <span class="pl-c">// Color of the text</span>
+    useFontAwesome<span class="pl-k">:</span> <span class="pl-c1">false</span>, <span class="pl-c">// Use fontawesome for the controls</span>
+    autoplay<span class="pl-k">:</span> <span class="pl-c1">false</span>, <span class="pl-c">// Play the text when fastreader ready</span>
+    readyText<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Ready<span class="pl-pds">"</span></span>, <span class="pl-c">// Text shown when the fastreader is prepared to play</span>
+    maxPivotLetterPos<span class="pl-k">:</span> <span class="pl-c1">5</span>, <span class="pl-c">// Maximum position of the pivot leter (center of sight)</span>
+    wpm<span class="pl-k">:</span> <span class="pl-c1">300</span> <span class="pl-c">// Words Per Minute</span>
+};</pre></div>
+
+<h4>
+<a id="set-settings" class="anchor" href="#set-settings" aria-hidden="true"><span class="octicon octicon-link"></span></a>Set settings</h4>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">"</span>#text<span class="pl-pds">"</span></span>).<span class="pl-en">fastreader</span>(
+    {
+        color<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>blue<span class="pl-pds">"</span></span>,
+        useFontAwesome<span class="pl-k">:</span> <span class="pl-c1">true</span>,
+        autoplay<span class="pl-k">:</span> <span class="pl-c1">true</span>,
+        readyText<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Let's go!<span class="pl-pds">"</span></span>,
+        wpm<span class="pl-k">:</span> <span class="pl-c1">100</span>
+    }
+);</pre></div>
+
+<h3>
+<a id="methods" class="anchor" href="#methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Methods</h3>
+
+<ul>
+<li>
+<strong>pause</strong>: Reader stops/continue showing words.</li>
+<li>
+<strong>close</strong>: Reader stops showing words and player close and hide. Also, reset to the start of the text.</li>
+<li>
+<strong>destroy</strong>: Reader stops showing words, player close, hide and then the <em>HTML</em> of the player is removed from teh * DOM* </li>
+</ul>
+
+<h4>
+<a id="invoke-methods" class="anchor" href="#invoke-methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Invoke methods</h4>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">"</span>#text<span class="pl-pds">"</span></span>).<span class="pl-en">fastreader</span>(<span class="pl-s"><span class="pl-pds">"</span>methodName<span class="pl-pds">"</span></span>); <span class="pl-c">// Generic example</span>
+<span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">"</span>#text<span class="pl-pds">"</span></span>).<span class="pl-en">fastreader</span>(<span class="pl-s"><span class="pl-pds">"</span>pause<span class="pl-pds">"</span></span>); <span class="pl-c">// Player paused</span>
+<span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">"</span>#text<span class="pl-pds">"</span></span>).<span class="pl-en">fastreader</span>(<span class="pl-s"><span class="pl-pds">"</span>close<span class="pl-pds">"</span></span>); <span class="pl-c">// Player closed</span>
+<span class="pl-en">$</span>(<span class="pl-s"><span class="pl-pds">"</span>#text<span class="pl-pds">"</span></span>).<span class="pl-en">fastreader</span>(<span class="pl-s"><span class="pl-pds">"</span>destroy<span class="pl-pds">"</span></span>); <span class="pl-c">// Player destroyed</span></pre></div>
+
+<h2>
+<a id="fonts" class="anchor" href="#fonts" aria-hidden="true"><span class="octicon octicon-link"></span></a>Fonts</h2>
+
+<p>This plugin needs a specific type of font to work properly. In order to fix the pivot leter always in the center of the sight we need a font wich every letter take the same width.
+Any <em>monospaced</em> font has this property. In this case the default css is using <em>'Droid Sans Mono'</em> wich i take it from google fonts.</p>
+
+<div class="highlight highlight-text-html-basic"><pre>&lt;<span class="pl-ent">link</span> <span class="pl-e">href</span>=<span class="pl-s"><span class="pl-pds">"</span>https://fonts.googleapis.com/css?family=Droid+Sans+Mono<span class="pl-pds">"</span></span> <span class="pl-e">rel</span>=<span class="pl-s"><span class="pl-pds">"</span>stylesheet<span class="pl-pds">"</span></span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/css<span class="pl-pds">"</span></span>&gt;</pre></div>
+
+<p>There are other insteresting fonts for the job, as an example, here are few of them:</p>
+
+<ul>
+<li>Consolas</li>
+<li>Menlo</li>
+<li>Monaco</li>
+<li>Lucida Console</li>
+<li>Liberation Mono</li>
+<li>DejaVu Sans Mono</li>
+<li>Bitstream Vera Sans Mono</li>
+<li>Courier New</li>
+<li>monospace</li>
+</ul>
+
+<h2>
+<a id="to-do" class="anchor" href="#to-do" aria-hidden="true"><span class="octicon octicon-link"></span></a>TO-DO</h2>
+
+<ul>
+<li>Set color for pivot letter in the settings (not important, you can use css for that).</li>
+<li>Custom template for the player.</li>
+<li>Countdown for the playing (instead of instant play).</li>
+</ul>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/frikinside/jquery.fast-reader">Jquery.fast-reader</a> is maintained by <a href="https://github.com/frikinside">frikinside</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+            <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-71744310-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
